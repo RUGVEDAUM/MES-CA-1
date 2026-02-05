@@ -1,0 +1,3 @@
+MOV A, #125
+MOV B, #10
+MUL AB
