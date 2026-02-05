@@ -1,0 +1,51 @@
+MOV R0, #40H
+    MOV R1, #40H
+    MOV R2, #32
+
+CHECK_LOOP:
+    MOV A, @R0
+    CJNE A, #0FFH, KEEP
+    SJMP NEXT_BYTE
+
+KEEP:
+    MOV @R1, A
+    INC R1
+
+NEXT_BYTE:
+    INC R0
+    DJNZ R2, CHECK_LOOP
+
+FILL_ZEROS:
+    MOV A, R1
+    CJNE A, #60H, CLEAR
+    SJMP STOP
+
+CLEAR:
+    MOV @R1, #00H
+    INC R1
+    SJMP FILL_ZEROS    MOV R0, #40H
+    MOV R1, #40H
+    MOV R2, #32
+
+CHECK_LOOP:
+    MOV A, @R0
+    CJNE A, #0FFH, KEEP
+    SJMP NEXT_BYTE
+
+KEEP:
+    MOV @R1, A
+    INC R1
+
+NEXT_BYTE:
+    INC R0
+    DJNZ R2, CHECK_LOOP
+
+FILL_ZEROS:
+    MOV A, R1
+    CJNE A, #60H, CLEAR
+    SJMP STOP
+
+CLEAR:
+    MOV @R1, #00H
+    INC R1
+    SJMP FILL_ZEROS
